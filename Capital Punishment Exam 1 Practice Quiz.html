@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Capital Punishment Exam 1 Practice Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f3f5f4; --card:#ffffff; --ink:#18242b; --muted:#5b6a72; --line:#d9e0e2;
+  --accent:#1f5f6b; --accent-ink:#ffffff; --sun:#e9b824; --sun-soft:#fbf0c8;
+  --ok:#1d7a46; --ok-bg:#e3f4ea; --bad:#b3372f; --bad-bg:#fbe7e5; --sel:#e2eef0;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12191c; --card:#1b2529; --ink:#e8eef0; --muted:#9db0b8; --line:#2d3b41;
+    --accent:#6fc0cf; --accent-ink:#0d1a1e; --sun:#e9b824; --sun-soft:#3a331a;
+    --ok:#5fd08d; --ok-bg:#16332396; --bad:#ff8c84; --bad-bg:#3d1f1d; --sel:#24363c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12191c; --card:#1b2529; --ink:#e8eef0; --muted:#9db0b8; --line:#2d3b41;
+  --accent:#6fc0cf; --accent-ink:#0d1a1e; --sun:#e9b824; --sun-soft:#3a331a;
+  --ok:#5fd08d; --ok-bg:#163323; --bad:#ff8c84; --bad-bg:#3d1f1d; --sel:#24363c;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}
+h1,h2,h3{font-family:Newsreader,Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+header.hero{padding:28px 0 8px}
+header.hero h1{font-size:clamp(30px,6vw,44px);font-weight:700;letter-spacing:-.01em}
+header.hero p{color:var(--muted);margin:10px 0 0;max-width:56ch}
+.anchors{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.chip{background:var(--sun-soft);border:1px solid var(--sun);border-radius:999px;padding:3px 12px;font-size:14px;font-weight:500}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-top:18px}
+.bar-row{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:6px}
+.track{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);transition:width .25s}
+.section-title{font-size:24px;margin:34px 0 4px}
+.section-sub{color:var(--muted);margin:0 0 14px;font-size:15px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 12px;margin:0 0 14px}
+.q .meta{font-size:13px;color:var(--muted);margin-bottom:6px}
+.q .text{font-weight:600;margin:0 0 12px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:8px;margin:0 0 8px;cursor:pointer}
+.opt:hover{border-color:var(--accent)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .L{flex:0 0 26px;height:26px;border-radius:50%;border:1.5px solid var(--muted);display:grid;place-items:center;font-size:13px;font-weight:600;color:var(--muted)}
+.opt.sel{background:var(--sel);border-color:var(--accent)}
+.opt.sel .L{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.opt:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.opt.tf{padding:10px 18px}
+.row-tf{display:flex;gap:10px}
+.row-tf .opt{flex:1;margin:0;justify-content:center;align-items:center}
+.btn{font:inherit;font-weight:600;background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:13px 22px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.submit{margin:26px 0 0;text-align:center}
+.submit small{display:block;color:var(--muted);margin-top:8px}
+.score{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;margin-top:20px;text-align:center}
+.score .big{font-family:Newsreader,Georgia,serif;font-size:60px;font-weight:700;line-height:1}
+.score .pct{font-size:20px;color:var(--muted);margin-top:4px}
+.topics{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:16px 0}
+.trow{display:grid;grid-template-columns:minmax(120px,190px) 1fr 48px;gap:10px;align-items:center;margin:8px 0;font-size:15px}
+.tbar{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.tbar i{display:block;height:100%;background:var(--accent)}
+.tbar i.low{background:var(--bad)}
+.weak{background:var(--sun-soft);border:1px solid var(--sun);border-radius:12px;padding:18px 20px;margin:16px 0}
+.weak h3{font-size:20px;margin-bottom:10px}
+.weak .w{margin:0 0 14px}
+.weak .w b{display:block}
+.weak .w span{font-size:15px}
+.rev{border-left:5px solid var(--bad);background:var(--card);border-radius:8px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 16px;margin:0 0 12px}
+.rev .qt{font-weight:600;margin:0 0 8px}
+.rev .you{background:var(--bad-bg);border-radius:6px;padding:6px 10px;margin:4px 0;font-size:15px}
+.rev .right{background:var(--ok-bg);border-radius:6px;padding:6px 10px;margin:4px 0;font-size:15px}
+.rev .why{font-size:15px;color:var(--ink);margin:8px 0 0}
+.perfect{background:var(--ok-bg);border-radius:10px;padding:16px;margin:14px 0}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.hide{display:none}
+@media (max-width:520px){.trow{grid-template-columns:1fr 48px}.trow .tbar{grid-column:1/-1;order:3}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <h1>Capital Punishment<br>Exam 1 Practice Quiz</h1>
+  <p>40 questions built only from the Exam 1 study guide. Answer everything, then submit. You'll get a score, an explanation for every miss, your three weakest topics, and 10 fresh follow-up questions aimed at them.</p>
+  <div class="anchors">
+    <span class="chip">10 → 16 → 18</span><span class="chip">STRONG + SURE + SWIFT + SEEN</span><span class="chip">NAGIN = NO ANSWER</span><span class="chip">BAD + MATTERED</span>
+  </div>
+</header>
+<div id="app"></div>
+</div>
+
+<script>
+/* Each question: t=topic, q=text, o=options (CORRECT FIRST; shuffled on screen), e=explanation. tf=true for True/False (o[0] is correct answer). */
+var TOPICS = {
+  statute: "Indiana statute",
+  stats: "Indiana statistics & reversals",
+  weis: "Weisheit & national picture",
+  det: "Deterrence",
+  retr: "Retribution",
+  iac: "Strickland / IAC",
+  spk: "Guest speakers (Giles & Mull)"
+};
+var REVIEW = {
+  statute: "The aggravator shelf keeps growing (about 18), while the mitigator shelf stays at 8 because #8 is a bottomless catchall. Age went 10 → 16 → 18. Capital cases need two lawyers plus investigators and experts (Rule 6.1). Death and LWOP share one aggravator doorway. Intellectual disability is an eligibility shield; mental illness is only mitigating weight. Methods went hanging → electrocution → lethal injection. A jury recommendation now binds the judge; a deadlocked jury lets the judge decide.",
+  stats: "23 executed, all male, about 86% White, 41 victims with 39 White. Death requests are now rare and geographically concentrated because prosecutors have discretion; eligible does not mean sought. Roughly two-thirds of death sentences were removed (reversal, commutation, dismissal/agreement), mostly in state post-conviction (quarter, half, quarter). Reversal does NOT mean exoneration.",
+  weis: "Weisheit: two child victims. State = DONE (all review finished). Defense = BRAIN + MERCY + MIND + MEDS (brain injury, clemency, competency to be executed, execution drugs). Nationally the system is shrinking and concentrated. Michigan City = Indiana state death row; Terre Haute = federal. Decades on death row (Indiana about 16 years, nationally about 22-23). More than 200 death-row exonerations; exoneration is not reversal.",
+  det: "Deterrence needs STRONG + SURE + SWIFT + SEEN. General = CROWD, specific = CULPRIT, marginal = COMPARISON (death vs. LWOP). Ehrlich found deterrence (about 7-8 fewer murders per execution); Bowers/Pierce raised brutalization; Shepherd found 6 deterrence, 8 no effect, 13 brutalization (Indiana in brutalization). Nagin/NRC: NO RELIABLE ANSWER, which is not the same as 'proved no deterrence'.",
+  retr: "Retribution is punishment because the offender deserves it for the past act: guilty people deserve punishment, only guilty people do, and it must be proportional. It's a moral (normative) question, not an empirical one. Retribution = rearview mirror; deterrence = windshield. Blecker separates limited, proportional retribution from limitless revenge and reserves death for the 'worst of the worst'.",
+  iac: "Strickland has two prongs and you need both: BAD (deficient performance) + MATTERED (prejudice, a meaningful effect on the outcome). Strategic decisions are not automatically incompetence, which makes prong 1 hard. Failure to investigate mitigation is a classic claim. When former trial lawyers evaluate themselves, it's a conflict of interest: a lawyer grading their own exam.",
+  spk: "GILES = FILES: federal defender, post-conviction, mitigation (abuse, neglect, mental illness, brain damage). Explanation is not excuse. Death reduced to LWOP can be a win. Federal row is about 23 hours a day lockdown, and victim families don't all want execution. MULL = MULLS: needs a statutory aggravator, asks whether a jury would realistically impose death, and whether pursuing it is appropriate. Oberhansley moved from death to LWOP over severe mental illness. Death-qualified jurors must be willing to consider death. Victim-family wishes matter but don't control him. None of his defendants were executed."
+};
+
+var MAIN = [
+{t:"statute",q:"Which statement best describes the difference between an aggravator and a mitigator?",o:["An aggravator is a circumstance written into the law that can make a murder eligible for death or LWOP, while a mitigator weighs against a death sentence.","An aggravator is evidence the defense uses to argue for a lighter sentence, and a mitigator makes a murder eligible for death.","Both are circumstances that only help the prosecution.","Both are decided only by the judge, never the jury."],e:"Aggravator shelf = the door to death/LWOP eligibility. Mitigator shelf = reasons that weigh against death. Don't flip them."},
+{t:"statute",q:"Indiana's list of statutory aggravators has grown, but the statutory mitigators have stayed at 8. Why?",o:["Mitigator #8 is a catchall for any other appropriate circumstance, so the legislature doesn't need to keep adding categories.","The legislature repealed most mitigators.","Only judges are allowed to consider mitigation.","Defense attorneys are not allowed to introduce new kinds of evidence."],e:"Box #8 is the 'bottomless box': any other circumstance appropriate for consideration, so defense can bring new evidence without new laws."},
+{t:"statute",q:"Which sequence correctly shows the changes in Indiana's minimum age of death eligibility?",o:["10 → 16 → 18","18 → 16 → 10","16 → 10 → 18","10 → 18 → 16"],e:"The sequence is 10 → 16 → 18. Today the minimum is 18 at the time of the crime. Dates aren't tested."},
+{t:"statute",q:"What was the professor's point about the statute once allowing death eligibility at age 10?",o:["The statute once permitted eligibility at that age, which does not mean a 10-year-old was actually sentenced to death.","Indiana executed a 10-year-old.","Ten is still the minimum age today.","Age 10 applies only in federal cases."],e:"The point is about what the law allowed (eligibility), not what actually happened."},
+{t:"statute",q:"What does Indiana's Rule 6.1 (formerly Rule 24) generally require in capital cases?",o:["At least two defense attorneys with specified experience, limits on other caseloads, and reimbursement for reasonable costs like investigators and experts.","One experienced attorney who personally does all investigation.","Only a public defender, with no limits on caseload.","No special requirements, since capital cases are handled like any other criminal case."],e:"Capital case = TWO lawyers with TWO toolboxes (law, and investigation/experts). Failures here can later become ineffective-assistance claims."},
+{t:"statute",q:"What is unusual about how Indiana handles death and LWOP (Life Without Parole)?",o:["They share the same statutory aggravator framework for eligibility.","LWOP requires its own separate list of aggravators.","LWOP is available for any murder without an aggravator.","LWOP is only available for defendants under 18."],e:"Two tracks, one station: an aggravator opens the door to death OR LWOP."},
+{t:"statute",q:"Which statement correctly distinguishes intellectual disability from serious mental illness under the Indiana statute?",o:["Intellectual disability bars death and LWOP under the statute, while mental illness can be mitigation but is not an automatic bar.","Both are automatic bars to death and LWOP.","Neither one can be considered by the jury.","Mental illness is an automatic bar, and intellectual disability is only mitigation."],e:"ID = eligibility shield. Mental illness = mitigating weight. This distinction came up repeatedly."},
+{t:"statute",q:"Which sequence correctly shows Indiana's historical execution methods?",o:["Hanging → electrocution → lethal injection","Electrocution → hanging → lethal injection","Lethal injection → electrocution → hanging","Hanging → lethal injection → electrocution"],e:"Rope → electric chair → syringe."},
+{t:"statute",q:"Under current Indiana law, what happens when the jury reaches a sentencing recommendation?",o:["The judge must follow it, even though the statute still uses the word \"recommendation.\"","The judge may override it and impose the other sentence.","It is purely advisory.","It is binding only for LWOP, not death."],e:"Judge override is gone. 'Recommendation' in name, binding in reality (the padlock on the gavel)."},
+{t:"statute",q:"What happens if an Indiana capital jury cannot agree on a sentencing recommendation?",o:["The judge makes the sentencing decision.","The defendant goes free.","The defendant automatically receives death.","The defendant automatically receives a term of years."],e:"Don't confuse the two cases: a reached recommendation binds the judge; a deadlock lets the judge decide."},
+{t:"stats",q:"Which description matches Indiana's executed population in the course data?",o:["23 people were executed, all male, and about 86% were White.","23 people were executed, with a mix of men and women.","41 people were executed, and most were Black.","23 people were executed, and most were Black."],e:"23 executed, all men, about 86% White (3 were Black). The 41 is the number of victims, not executions."},
+{t:"stats",q:"Which statement best describes the victims in the executed cases?",o:["39 of 41 victims (about 95%) were White.","Most victims were Black.","Victims were evenly split by race.","All victims were male."],e:"41 victims: 26 male and 15 female, and 39 of 41 were White."},
+{t:"stats",q:"What does the course say about Indiana death requests today?",o:["Prosecutors rarely request death, and being legally eligible is not the same as actually being sought.","Prosecutors seek death in every eligible case.","No murder is legally eligible for death anymore.","Death requests are increasing every year."],e:"Indiana still has the death penalty, but having a statute is not the same as using it frequently."},
+{t:"stats",q:"Of the people Indiana sentenced to death, about what share were removed from death row through reversal, commutation, or dismissal/agreement?",o:["Roughly two-thirds","About one-tenth","About one-quarter","Nearly all"],e:"61 of 97 (about 63%), or about 67% if you remove those who died of other causes. Exam answer: roughly two-thirds."},
+{t:"stats",q:"What is the best description of a \"reversal\" of a death sentence or conviction?",o:["A legal problem was found, which may lead to a new trial, a new penalty phase, or a negotiated LWOP sentence, and does not automatically mean innocence.","The person was proven innocent and released.","The governor pardoned the person.","The jury changed its mind after the verdict."],e:"Reversal ≠ exoneration. Exoneration means the person is cleared of the crime."},
+{t:"weis",q:"What is the State's position in the Jeffrey Weisheit dispute?",o:["All legal review is finished, so the Indiana Supreme Court should set an execution date.","The defense needs more time for federal habeas.","A federal habeas petition is still pending.","The Supreme Court has agreed to hear the case."],e:"State = DONE: direct appeal, state post-conviction, federal habeas denied, Seventh Circuit affirmed, Supreme Court denied review."},
+{t:"weis",q:"In the memory anchor BRAIN + MERCY + MIND + MEDS, what does \"MERCY\" refer to?",o:["Clemency","Competency to be executed","Brain injury evidence","Problems with execution drugs"],e:"MERCY = clemency (executive mercy). MIND = competency, BRAIN = brain injury, MEDS = execution drugs."},
+{t:"weis",q:"Which is correct about where the death rows are?",o:["Michigan City is Indiana's state death row, and Terre Haute is federal death row.","Michigan City is federal death row, and Terre Haute is Indiana's state death row.","Both are state death rows.","Both are federal death rows."],e:"Michigan City = state. Terre Haute = federal."},
+{t:"weis",q:"About how long do people typically spend on death row before execution?",o:["Indiana about 16 years, nationally about 22-23 years","Indiana about 5 years, nationally about 10 years","Indiana about 40 years, nationally about 16 years","Both under 5 years"],e:"Decades on death row means weak celerity (swiftness), which ties back to deterrence."},
+{t:"det",q:"Which lists the four requirements for effective deterrence?",o:["Strong, Sure, Swift, Seen","Severe, Secret, Swift, Seen","Strong, Sure, Slow, Seen","Strong, Sure, Swift, Secret"],e:"Severity, certainty, celerity, publicity: Strong, Sure, Swift, Seen."},
+{t:"det",q:"Which describes general deterrence (CROWD)?",o:["Punishing one offender to discourage other people from committing crimes.","Preventing that same offender from committing more crimes.","Asking whether death deters more than LWOP.","Punishing someone because they deserve it."],e:"General = Crowd. Specific = Culprit. Marginal = Comparison. The last option describes retribution."},
+{t:"det",q:"What question does marginal (differential) deterrence (COMPARISON) ask?",o:["Does death deter more than LWOP?","Is the punishment proportional to the crime?","Will other people be discouraged by seeing this punishment?","Will this offender commit another crime?"],e:"The key comparison is death vs. LWOP, not 'does punishment deter at all?'"},
+{t:"det",q:"What did Ehrlich's research conclude?",o:["There was a deterrent effect, estimated at roughly 7-8 fewer murders per additional execution.","Executions increase murders.","No reliable answer can be drawn.","Executions have no effect."],e:"Ehrlich found deterrence. Bowers/Pierce challenged him with brutalization; Nagin concluded no reliable answer."},
+{t:"det",q:"In Shepherd's state-by-state findings (6 deterrence, 8 no effect, 13 brutalization), where did Indiana fall?",o:["The brutalization group","The deterrence group","The no-effect group","Indiana was not studied"],e:"6 deter / 8 nothing / 13 brutalize. Indiana was in the brutalization group."},
+{t:"det",q:"What is the correct summary of Nagin and the National Research Council?",o:["Existing research cannot reliably determine whether the death penalty decreases, increases, or has no effect on homicide.","They proved the death penalty does not deter.","They proved the death penalty deters.","They proved the death penalty increases homicide."],e:"NAGIN = NO ANSWER. Not 'no deterrence', just no reliable answer from the existing numbers."},
+{t:"retr",q:"Which best describes retribution?",o:["A backward-looking idea that punishment is given because the offender deserves it for the past act.","A forward-looking goal of reducing future crime.","Revenge that can be limitless and emotional.","Keeping the offender from committing future crimes."],e:"Retribution = rearview mirror. Deterrence = windshield. And retribution is limited and proportional, unlike revenge."},
+{t:"retr",q:"What is Robert Blecker's distinction between revenge and retribution?",o:["Retribution is directed at the guilty, limited, and proportional, unlike revenge, and he argues death should be reserved for the \"worst of the worst.\"","They are the same thing.","Retribution depends mainly on deterrence statistics.","Nobody deserves death."],e:"Revenge can be limitless, emotional, misdirected. Retribution must be targeted, limited, proportional."},
+{t:"iac",q:"What are the two prongs of the Strickland v. Washington test?",o:["The lawyer's performance was deficient, and it prejudiced the outcome (BAD + MATTERED).","The lawyer lost, and the defendant is innocent.","The defendant is factually innocent, and the lawyer was unprepared.","The lawyer was disliked, and the sentence was harsh."],e:"BAD = deficient performance. MATTERED = prejudice. You need both."},
+{t:"spk",q:"Which idea did Jean Giles emphasize?",o:["Explanation is not excuse, and a death sentence reduced to LWOP can count as a successful result.","Mitigation is meant to excuse the crime.","\"Winning\" always means the client is released.","All victims' families support execution."],e:"GILES = FILES. Mitigation explains; it doesn't excuse. Winning can mean LWOP instead of death."},
+{t:"spk",q:"According to the course, how does Jeremy Mull decide whether to seek death?",o:["He considers whether there is a statutory aggravator, whether a jury would realistically impose death, and whether pursuing death is appropriate; victim-family wishes matter but don't control him.","He seeks death in every case with an aggravator.","A death-qualified juror must want death.","The victim's family makes the final decision."],e:"MULL = MULLS it over. Aggravator, realistic jury, appropriateness. Family wishes are considered, not controlling."},
+{t:"statute",tf:true,q:"True or False: Under the Indiana statute, serious mental illness is an automatic bar to death and LWOP.",o:["False","True"],e:"It's intellectual disability that bars death/LWOP. Mental illness is mitigation."},
+{t:"det",tf:true,q:"True or False: Nagin and the National Research Council concluded that the death penalty has been proven not to deter murder.",o:["False","True"],e:"They said existing research gives no reliable answer. That's different from proving no deterrence."},
+{t:"weis",tf:true,q:"True or False: Federal death row is located in Terre Haute, Indiana.",o:["True","False"],e:"Terre Haute = federal. Michigan City = Indiana state death row."},
+{t:"spk",tf:true,q:"True or False: A \"death-qualified jury\" is a jury made up of people who want to impose death.",o:["False","True"],e:"Death-qualified means jurors are willing to consider death as a lawful punishment. Someone who could never vote for death is excluded."},
+{t:"spk",tf:true,q:"True or False: Mull said he does not see death as a strong deterrent because it lacks certainty and swiftness.",o:["True","False"],e:"Mull: uncertain and very delayed, which ties to certainty and celerity in the deterrence framework."},
+{t:"spk",q:"Scenario: A county prosecutor has a murder case with a valid statutory aggravator. The victim's family strongly wants death, but the prosecutor believes a jury would realistically not impose it. What is the best description of the prosecutor's position?",o:["The prosecutor may decline to seek death, because eligibility doesn't require a request and family wishes do not control the charging decision.","The prosecutor must seek death because an aggravator exists.","The family's wishes legally decide the matter.","The prosecutor cannot seek LWOP unless the jury agrees first."],e:"Legal death eligibility is not the same as requesting death. Prosecutorial discretion applies, and family wishes matter but don't control."},
+{t:"iac",q:"Scenario: A trial lawyer never investigated the defendant's severe childhood abuse and brain damage. Years later, new lawyers uncover it, and it could meaningfully change a jury's sentencing decision. How does this fit the Strickland test?",o:["Both prongs could plausibly be met: failure to investigate mitigation may be deficient performance, and the missing evidence may have mattered to the outcome.","Neither prong could possibly be met, because lawyers always have discretion.","Only the prejudice prong matters.","Only the deficient performance prong matters."],e:"BAD + MATTERED. Both prongs are required, and failure to investigate mitigation is a classic fit."},
+{t:"statute",q:"Scenario: An Indiana jury reaches a recommendation of LWOP. The trial judge personally believes death is the right sentence. Under current Indiana law, what happens?",o:["The judge must follow the jury's recommendation.","The judge may impose death anyway.","The case is sent to federal court.","The judge must call a new jury."],e:"Judge override is gone. A reached recommendation binds the judge."},
+{t:"det",q:"Scenario: A researcher finds murders dropped in a state after executions increased, but never compared the death penalty with LWOP. What is the biggest weakness according to the Nagin/NRC critique?",o:["The study did not compare death with a realistic alternative like LWOP, so it did not measure marginal deterrence.","The study used too many states.","The study focused on retribution rather than deterrence.","The study counted exonerations as reversals."],e:"Nagin's problems: no proper death-vs-LWOP comparison, and weak assumptions about whether offenders perceive execution risk."},
+{t:"retr",q:"Scenario: A commentator says, \"This offender should be executed because it's what he deserves for what he did, whether or not it prevents anyone else from committing murder.\" Which rationale is the commentator relying on?",o:["Retribution","General deterrence","Specific deterrence","Marginal deterrence"],e:"'Deserves' and 'whether or not it prevents' = past-looking desert, which is retribution."}
+];
+
+var BANK = [
+{t:"statute",q:"What is mitigator #8?",o:["A catchall for any other circumstance appropriate for consideration","A rule that sets the minimum age at 18","A bar for defendants with intellectual disability","A list of the 18 aggravators"],e:"#8 is the bottomless box."},
+{t:"statute",q:"Historically, \"judge override\" meant:",o:["The jury recommended one sentence, but the judge could independently impose the other","The judge could skip the trial","The governor could overturn the jury","The jury could overrule the judge's sentence"],e:"Judge override is gone; a reached jury recommendation now binds the judge."},
+{t:"statute",q:"Which pairing is correct?",o:["Intellectual disability = eligibility shield; mental illness = mitigating weight","Intellectual disability = mitigating weight; mental illness = eligibility shield","Both are eligibility shields","Both are only mitigating weight"],e:"ID shields from death/LWOP under the statute; mental illness is weighed as mitigation."},
+{t:"statute",q:"Why does Indiana's capital counsel rule require investigators and experts to be reimbursed?",o:["Capital representation needs far more investigation and expertise than an ordinary case","Because ordinary murder cases require two lawyers","Because investigators decide sentencing","Because the jury requires it"],e:"Failure to investigate can later become an ineffective-assistance claim."},
+{t:"stats",q:"The \"roughly two-thirds\" figure in the Indiana data refers to:",o:["The share of death sentences removed through reversal, commutation, or dismissal/agreement","The share of murders that were death-eligible","The share of executed people who were White","The share of victims who were female"],e:"About 61 of 97 (or 61 of 91 without those who died of other causes)."},
+{t:"stats",q:"Where did most reversals happen (quarter, half, quarter)?",o:["State post-conviction","Direct appeal","Federal review","At the original trial"],e:"Direct appeal about 23%, state post-conviction about 54%, federal about 23%."},
+{t:"stats",q:"Which is the correct distinction?",o:["A reversal corrects a legal problem; an exoneration means the person was cleared of the crime","A reversal means innocent; an exoneration means a new trial","They mean the same thing","An exoneration means a judge overrode a jury"],e:"Reversal ≠ exoneration."},
+{t:"stats",q:"Which best captures the course pattern on geography and death requests?",o:["Cases cluster in certain counties because prosecutors use local discretion, and death requests are now rare","Cases are spread evenly and requests are rising","Only federal prosecutors decide death requests","Judges choose which county gets capital cases"],e:"Where a murder occurs matters because of prosecutorial discretion."},
+{t:"weis",q:"Which describes the Weisheit case?",o:["Two child victims, with aggravators including multiple murders and victims under 12","One adult victim who was a police officer","Three victims in a religious setting","Two adult victims in a school"],e:"Per the State's filing, Weisheit was convicted of killing two children."},
+{t:"weis",q:"What does \"competency to be executed\" ask?",o:["Whether the person sufficiently understands that they are being executed and why","Whether the person was competent at the original trial","Whether the person is guilty","Whether the person has an intellectual disability"],e:"It's different from guilt, intellectual disability, ordinary mental illness, and trial competency."},
+{t:"weis",q:"Which is correct about the national trend?",o:["The system is shrinking: fewer death sentences, a smaller death row, and executions concentrated in fewer places","The system is growing in every state","Executions are spread evenly across states","Every state has the death penalty"],e:"Shrinking pyramid, with heavy geographic concentration."},
+{t:"weis",q:"\"More than 200 death-row exonerations\" means:",o:["People sentenced to death were later cleared of the crime","People had their sentences reversed","People were executed","People had their sentences commuted"],e:"Exoneration ≠ reversal."},
+{t:"det",q:"Which deterrence requirement is most weakened by decades on death row?",o:["Swift","Strong","Seen","Sure"],e:"Celerity (swiftness): 20+ years on death row means weak swiftness."},
+{t:"det",q:"Specific deterrence (CULPRIT) is about:",o:["Preventing that offender from committing more crimes","Discouraging the general public","Comparing death and LWOP","Giving the offender what they deserve"],e:"Specific = Culprit. It overlaps conceptually with incapacitation."},
+{t:"det",q:"The brutalization hypothesis claims that:",o:["Executions may increase homicide by modeling or legitimizing violent responses","Executions deter more than LWOP","Executions have no effect","LWOP increases homicide"],e:"An execution sends a violent shockwave outward."},
+{t:"det",q:"Which were Nagin's two main problems with existing studies?",o:["No proper comparison with realistic alternatives like LWOP, and weak assumptions about whether offenders perceive execution risk","Too few murders and no Ehrlich data","They ignored retribution and ignored Indiana","All studies were done in Indiana"],e:"NAGIN = NO ANSWER from the existing numbers."},
+{t:"retr",q:"Which is NOT a core principle of retribution?",o:["Punishment is justified mainly because it discourages other people","Guilty people deserve punishment","Only guilty people deserve punishment","Punishment should be proportional"],e:"Discouraging others is deterrence (forward-looking)."},
+{t:"retr",q:"Which pairing is correct?",o:["Retribution looks backward (rearview mirror); deterrence looks forward (windshield)","Retribution looks forward; deterrence looks backward","Both look backward","Both look forward"],e:"Deterrence punishes to change tomorrow; retribution punishes because of yesterday."},
+{t:"retr",q:"Why can't you test retribution with homicide-rate statistics?",o:["Retribution asks a moral question about what is deserved, not an empirical question about future crime","Because crime rates are secret","Because retribution applies only in federal cases","Because it is the same as deterrence"],e:"Deterrence is empirical in principle; retribution is normative."},
+{t:"retr",q:"Blecker's phrase \"worst of the worst\" reflects the idea that:",o:["Death, if deserved at all, should be reserved for those who most deserve it","Everyone convicted of murder deserves death","Only deterrence matters","Emotional revenge is acceptable"],e:"Retribution is limited and proportional."},
+{t:"iac",q:"Which pairing matches BAD + MATTERED?",o:["BAD = deficient performance; MATTERED = prejudice","BAD = prejudice; MATTERED = deficient performance","BAD = guilty client; MATTERED = harsh sentence","BAD = unlucky outcome; MATTERED = lawyer's reputation"],e:"Both prongs are required."},
+{t:"iac",q:"A defendant proves the lawyer's performance was deficient but cannot show it made a meaningful difference to the outcome. Result?",o:["The Strickland claim fails because both prongs are required","The claim succeeds automatically","The claim succeeds only if the person is guilty","A new trial is automatic"],e:"No second card = no successful Strickland claim."},
+{t:"iac",q:"Why is it hard to decide whether a lawyer was deficient?",o:["A decision that looks bad later may have been a reasonable strategy, and telling the difference can be subjective","Lawyers never make strategic decisions","Courts ignore lawyer performance","Strategy is always incompetence"],e:"Strategy vs. incompetence is subjective, especially when counsel failed to investigate mitigation."},
+{t:"iac",q:"What is the conflict of interest when former trial lawyers evaluate their own performance?",o:["They have a personal interest in defending their own competence that competes with the former client's interest","The prosecutor represents both sides","The judge is also a witness","A juror represents the client"],e:"Lawyer grading their own exam."},
+{t:"spk",q:"Which describes Jean Giles's work?",o:["Federal defender doing capital and post-conviction defense, including reinvestigating mitigation","Elected Clark County prosecutor","A trial judge","A legislator who wrote the statute"],e:"GILES = FILES."},
+{t:"spk",q:"Malingering means:",o:["Deliberately faking or exaggerating symptoms","Having severe mental illness","Having an intellectual disability","Being legally incompetent to be executed"],e:"Mull discussed it when evaluating claims of mental illness."},
+{t:"spk",q:"What does the Oberhansley example show?",o:["A horrific crime plus an aggravator does not mean automatic death; Mull moved from seeking death to LWOP because of severe mental illness","Mull's office executed him","He was barred by intellectual disability","A judge overrode the jury"],e:"Prosecutorial discretion, mitigation, mental-health evidence, and jury judgment all still matter."},
+{t:"spk",q:"According to Giles, what are federal death-row conditions like?",o:["About 23 hours per day locked down, with limited recreation and isolation","Open yard access all day","Identical to Indiana's state death row","Shared housing with the general population"],e:"She also noted that victims' families don't all support execution."}
+];
+
+/* ---------- helpers ---------- */
+var L = ["A","B","C","D"];
+var app = document.getElementById("app");
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function prep(list){
+  return list.map(function(q){
+    if(q.tf){return {t:q.t,tf:true,q:q.q,e:q.e,opts:["True","False"],ans:q.o[0]==="True"?0:1}}
+    var opts=shuffle(q.o);
+    return {t:q.t,q:q.q,e:q.e,opts:opts,ans:opts.indexOf(q.o[0])};
+  });
+}
+var quiz=[], picked={}, mode="main";
+
+function renderQuiz(list,title,sub){
+  quiz=prep(list); picked={}; window._confirmed=false;
+  var h='<div class="bar"><div class="bar-row"><span id="cnt">0 of '+quiz.length+' answered</span><span>'+esc(title)+'</span></div><div class="track"><div class="fill" id="fill"></div></div></div>';
+  var started=false;
+  quiz.forEach(function(q,i){
+    var heading="";
+    if(!started||(mode==="main"&&(i===0||i===30||i===35))){
+      if(mode==="main"){
+        if(i===0)heading='<h2 class="section-title">Part 1: Multiple choice</h2><p class="section-sub">Pick the single best answer.</p>';
+      }else if(i===0){heading='<h2 class="section-title">'+esc(title)+'</h2><p class="section-sub">'+esc(sub||"")+'</p>';}
+      started=true;
+    }
+    h+=heading;
+    h+='<div class="q" id="q'+i+'"><div class="meta">Question '+(i+1)+'</div><p class="text">'+esc(q.q)+'</p>';
+    if(q.tf){
+      h+='<div class="row-tf">';
+      q.opts.forEach(function(o,k){h+='<label class="opt tf" data-q="'+i+'" data-k="'+k+'"><input type="radio" name="q'+i+'" value="'+k+'"><span>'+o+'</span></label>'});
+      h+='</div>';
+    }else{
+      q.opts.forEach(function(o,k){h+='<label class="opt" data-q="'+i+'" data-k="'+k+'"><input type="radio" name="q'+i+'" value="'+k+'"><span class="L">'+L[k]+'</span><span>'+esc(o)+'</span></label>'});
+    }
+    h+='</div>';
+  });
+  h+='<div class="submit"><button class="btn" id="submit">Submit your answers for grading</button><small id="warn"></small></div>';
+  app.innerHTML=h;
+  app.querySelectorAll(".opt").forEach(function(el){
+    el.addEventListener("change",function(){
+      var qi=+el.getAttribute("data-q"),k=+el.getAttribute("data-k");
+      picked[qi]=k;
+      app.querySelectorAll('.opt[data-q="'+qi+'"]').forEach(function(x){x.classList.remove("sel")});
+      el.classList.add("sel");
+      var n=Object.keys(picked).length;
+      document.getElementById("cnt").textContent=n+" of "+quiz.length+" answered";
+      document.getElementById("fill").style.width=(100*n/quiz.length)+"%";
+    });
+  });
+  document.getElementById("submit").addEventListener("click",function(){
+    var n=Object.keys(picked).length, miss=quiz.length-n;
+    if(miss>0&&!window._confirmed){
+      document.getElementById("warn").textContent=miss+" unanswered (they count as wrong). Press again to submit anyway.";
+      window._confirmed=true;return;
+    }
+    window._confirmed=false;grade();
+  });
+  window.scrollTo(0,0);
+}
+
+function grade(){
+  var correct=0, byTopic={};
+  Object.keys(TOPICS).forEach(function(k){byTopic[k]={c:0,n:0}});
+  var misses=[];
+  quiz.forEach(function(q,i){
+    byTopic[q.t].n++;
+    if(picked[i]===q.ans){correct++;byTopic[q.t].c++}else misses.push(i);
+  });
+  var total=quiz.length, pct=Math.round(100*correct/total);
+  var h='<h2 class="section-title">'+(mode==="main"?"Your results":"Follow-up results")+'</h2>';
+  h+='<div class="score"><div class="big">'+correct+' / '+total+'</div><div class="pct">'+pct+'%</div></div>';
+
+  var ranked=Object.keys(byTopic).filter(function(k){return byTopic[k].n>0}).map(function(k){
+    var d=byTopic[k];return {k:k,ratio:d.c/d.n,missed:d.n-d.c,n:d.n,c:d.c};
+  }).sort(function(a,b){return a.ratio-b.ratio||b.missed-a.missed});
+
+  h+='<div class="topics"><h3 style="font-size:20px;margin-bottom:8px">Score by topic</h3>';
+  ranked.slice().sort(function(a,b){return b.n-a.n}).forEach(function(r){
+    var p=Math.round(100*r.ratio);
+    h+='<div class="trow"><span>'+TOPICS[r.k]+' <span style="color:var(--muted)">('+r.c+'/'+r.n+')</span></span><div class="tbar"><i class="'+(p<70?"low":"")+'" style="width:'+p+'%"></i></div><span>'+p+'%</span></div>';
+  });
+  h+='</div>';
+
+  var weak=ranked.filter(function(r){return r.missed>0}).slice(0,3);
+  window._weak=weak.map(function(r){return r.k});
+
+  if(misses.length===0){
+    h+='<div class="perfect"><b>Perfect score.</b> Nothing to review. If you want more practice, take the follow-up set below.</div>';
+    window._weak=ranked.slice(0,3).map(function(r){return r.k});
+  }else{
+    h+='<div class="weak"><h3>Your '+weak.length+' weakest topic'+(weak.length>1?"s":"")+'</h3>';
+    weak.forEach(function(r){
+      h+='<div class="w"><b>'+TOPICS[r.k]+' ('+r.c+'/'+r.n+')</b><span>'+REVIEW[r.k]+'</span></div>';
+    });
+    h+='</div>';
+    h+='<h2 class="section-title">Questions to review ('+misses.length+')</h2>';
+    misses.forEach(function(i){
+      var q=quiz[i], mine=picked[i];
+      h+='<div class="rev"><div class="meta" style="font-size:13px;color:var(--muted)">Question '+(i+1)+' · '+TOPICS[q.t]+'</div><p class="qt">'+esc(q.q)+'</p>';
+      h+='<div class="you"><b>Your answer:</b> '+(mine===undefined?"(no answer)":(q.tf?"":L[mine]+". ")+esc(q.opts[mine]))+'</div>';
+      h+='<div class="right"><b>Correct answer:</b> '+(q.tf?"":L[q.ans]+". ")+esc(q.opts[q.ans])+'</div>';
+      h+='<p class="why"><b>Why:</b> '+esc(q.e)+(mine!==undefined?' Your choice fits a common mix-up with the idea above, so compare the two once more.':'')+'</p></div>';
+    });
+  }
+
+  h+='<div class="actions">';
+  if(mode==="main"){h+='<button class="btn" id="follow">Start 10 follow-up questions on my weak areas</button>';}
+  else{h+='<button class="btn" id="follow">Try 10 new follow-up questions</button>';}
+  h+='<button class="btn ghost" id="again">Retake the full 40-question quiz</button></div>';
+  app.innerHTML=h;
+  document.getElementById("follow").addEventListener("click",startFollow);
+  document.getElementById("again").addEventListener("click",function(){mode="main";renderQuiz(MAIN,"Full practice quiz")});
+  window.scrollTo(0,0);
+}
+
+function startFollow(){
+  var weak=(window._weak&&window._weak.length)?window._weak:Object.keys(TOPICS).slice(0,3);
+  var shares=weak.length===3?[4,3,3]:weak.length===2?[5,5]:[10];
+  var chosen=[];
+  weak.forEach(function(k,idx){
+    var pool=shuffle(BANK.filter(function(q){return q.t===k}));
+    chosen=chosen.concat(pool.slice(0,shares[idx]));
+  });
+  if(chosen.length<10){
+    var rest=shuffle(BANK.filter(function(q){return chosen.indexOf(q)<0}));
+    chosen=chosen.concat(rest.slice(0,10-chosen.length));
+  }
+  mode="follow";
+  renderQuiz(shuffle(chosen),"Follow-up set","Ten new questions, weighted toward the topics you missed most.");
+}
+
+renderQuiz(MAIN,"Full practice quiz");
+</script>
+</body>
+</html>
